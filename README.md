@@ -1,1 +1,3 @@
-# apm-ng2
+# apm
+
+Acme Product Management developed using Angular 2.
