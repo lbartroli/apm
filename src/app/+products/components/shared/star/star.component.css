@@ -1,0 +1,20 @@
+.content-rating {
+  width: 86px;
+  cursor: pointer;
+}
+
+.crop {
+  overflow: hidden;
+}
+
+.crop-gray {
+  position: absolute;
+}
+
+.crop-gray .glyphicon-star {
+  color: lightgray;
+}
+
+.glyphicon-star {
+  pointer-events: none;
+}
