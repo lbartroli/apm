@@ -6,13 +6,14 @@ import {ProductService} from './+products/services/product.service';
 import {ProductDetailComponent} from './+products/components/product-detail/product-detail.component';
 import {HomeComponent} from './+home';
 import {ProductsComponent} from './+products';
+import {NavbarComponent} from './navbar';
 
 @Component({
   moduleId: module.id,
   selector: 'apm-app',
   templateUrl: 'apm.component.html',
   styleUrls: ['apm.component.css'],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, NavbarComponent],
   providers: [ProductService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @Routes([
@@ -22,5 +23,5 @@ import {ProductsComponent} from './+products';
   {path: '/product/:id', component: ProductDetailComponent},
 ])
 export class ApmAppComponent {
-  title: string = 'Acme Product Management';
+  constructor() {}
 }

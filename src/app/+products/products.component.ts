@@ -7,4 +7,5 @@ import {ProductListComponent} from './components/product-list';
   directives: [ProductListComponent]
 })
 export class ProductsComponent {
+  constructor() {}
 }
