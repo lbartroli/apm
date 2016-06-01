@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Product} from '../../interfaces/product.interface';
 import {ProductFilterPipe} from '../../pipes/product-filter.pipe';
@@ -29,7 +29,7 @@ export class ProductListComponent implements OnInit {
         products => this.products = products, error => this.errorMessage = <any>error);
   }
 
-  toggleImage(): void { this.showImage = !this.showImage; }
-
-  onRatingClicked(message: string): void { this.pageTitle = 'Product List: ' + message; }
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
 }

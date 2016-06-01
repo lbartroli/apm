@@ -62,7 +62,6 @@
     "directive-selector-name": [true, "camelCase"],
     "component-selector-name": [true, "kebab-case"],
     "directive-selector-type": [true, "attribute"],
-    "component-selector-type": [true, "element"],
-    "pipe-naming": [true, "camelCase"]
+    "component-selector-type": [true, "element"]
   }
 }

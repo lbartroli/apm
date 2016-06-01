@@ -5,12 +5,12 @@ import {Product} from '../interfaces/product.interface';
 
 @Injectable()
 export class ProductService {
-  private _productUrl = 'app/api/products.json';
+  private productUrl = 'app/api/products.json';
 
-  constructor(private _http: Http) {}
+  constructor(private http: Http) {}
 
   getProducts(): Observable<Product[]> {
-    return this._http.get(this._productUrl)
+    return this.http.get(this.productUrl)
         .map((response: Response) => <Product[]>response.json())
         .do(data => console.log('All: ' + JSON.stringify(data)))
         .catch(this.handleError);
