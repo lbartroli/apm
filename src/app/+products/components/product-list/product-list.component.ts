@@ -34,6 +34,6 @@ export class ProductListComponent implements OnInit {
   }
 
   onSelect(product: Product) {
-    this.router.navigate(['/product', product.productId]);
+    this.router.navigate(['/products', product.productId]);
   }
 }

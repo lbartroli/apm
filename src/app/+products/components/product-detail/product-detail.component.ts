@@ -18,11 +18,6 @@ export class ProductDetailComponent {
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute) {}
 
-  /*routerOnActivate(curr: RouteSegment): void {
-    let id = +curr.getParam('id');
-    this.getProduct(id);
-  }*/
-
   ngOnInit() {
   this.sub = this.route.params.subscribe(params => {
      let id = +params['id']; // (+) converts string 'id' to a number
