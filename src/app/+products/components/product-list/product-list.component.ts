@@ -1,5 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {Product} from '../../interfaces/product.interface';
 import {ProductFilterPipe} from '../../pipes/product-filter.pipe';
 import {StarComponent} from '../shared/star/star.component';
@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
   errorMessage: string;
   products: Product[];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
@@ -31,5 +31,9 @@ export class ProductListComponent implements OnInit {
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+  }
+
+  onSelect(product: Product) {
+    this.router.navigate(['/product', product.productId]);
   }
 }
