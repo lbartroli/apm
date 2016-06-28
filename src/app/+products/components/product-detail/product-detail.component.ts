@@ -1,7 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, AfterViewInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Product} from '../../interfaces/product.interface';
+import {IProduct} from '../../interfaces/product.interface';
 import {StarComponent} from '../shared/star/star.component';
+import {ProductFormComponent} from '../shared/product-form/product-form.component';
 import {ProductService} from '../../services/product.service';
 import { AuthService } from '../../../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
@@ -12,21 +13,16 @@ import { DialogService } from '../../../shared/dialog.service';
   moduleId: module.id,
   templateUrl: 'product-detail.component.html',
   styleUrls: ['product-detail.component.css'],
-  directives: [StarComponent]
+  directives: [StarComponent, ProductFormComponent]
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
+  @ViewChild(ProductFormComponent)
+  private productFormComponent: ProductFormComponent;
   pageTitle: string = 'Product details';
-  product: Product;
+  product: IProduct;
   errorMessage: string;
   private sub: any;
   editMode: boolean = false;
-  editName: string;
-  editCode: string;
-  editDescription: string;
-  editReleaseDate: string;
-  editAvailability: string;
-  editPrice: number;
-  editStarRating: number;
 
   constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, public authService: AuthService, private dialogService: DialogService) {}
 
@@ -46,11 +42,15 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         product => this.product = product, error => this.errorMessage = <any>error);
   }
 
-  onBack(): void { this.router.navigate(['/products']); }
+  onBack(): void {
+    this.router.navigate(['/products']);
+  }
 
-  editProduct(): void { this.editMode = true; }
+  editProduct(): void {
+    this.editMode = true;
+  }
 
-  cancelEdit(): void {
+  onDiscardChanges() {
     this.onBack();
   }
 
@@ -77,12 +77,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   }
 
   checkChanges(): boolean {
-    return !this.product ||
-      this.product.productName === this.editName ||
-      this.product.productCode === this.editCode ||
-      this.product.description === this.editDescription ||
-      this.product.releaseDate === this.editReleaseDate ||
-      this.product.price === this.editPrice ||
-      this.product.starRating === this.editStarRating
+    return this.productFormComponent.checkChanges();
   }
 }

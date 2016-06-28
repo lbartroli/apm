@@ -40,7 +40,8 @@
     </div>
 
     <div *ngIf="authService.isLoggedIn && editMode">
-      <div class="form-group">
+      <app-product-form [product]="product" (onDiscardChanges)="onDiscardChanges($event)"></app-product-form>
+      <!--<div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" name="name" id="name" [value]="product.productName" placeholder="Name" [(ngModel)]="editName">
       </div>
@@ -80,7 +81,7 @@
         <button class='btn btn-default' (click)='cancelEdit()' *ngIf="authService.isLoggedIn && editMode">
           <i class='glyphicon glyphicon-remove'></i> Discard changes
         </button>
-      </div>
+      </div>-->
     </div>
   </div>
 

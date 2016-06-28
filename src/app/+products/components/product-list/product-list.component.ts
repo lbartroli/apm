@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
-import {Product} from '../../interfaces/product.interface';
+import {IProduct} from '../../interfaces/product.interface';
 import {ProductFilterPipe} from '../../pipes/product-filter.pipe';
 import {StarComponent} from '../shared/star/star.component';
 import {ProductService} from '../../services/product.service';
@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   listFilter: string;
   errorMessage: string;
-  products: Product[];
+  products: IProduct[];
 
   constructor(private productService: ProductService, private router: Router) {}
 
@@ -37,7 +37,7 @@ export class ProductListComponent implements OnInit {
     localStorage.setItem('showImages', JSON.stringify(this.showImage));
   }
 
-  onSelect(product: Product) {
+  onSelect(product: IProduct) {
     this.router.navigate(['/products', product.productId]);
   }
 }
