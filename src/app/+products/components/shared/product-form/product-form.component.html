@@ -1,0 +1,62 @@
+<form (ngSubmit)="saveEdit()" #productForm="ngForm">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="productName" id="productName" [value]="product.productName" placeholder="Name" [(ngModel)]="editName" #nameInput="ngModel" required>
+    <div [hidden]="nameInput.valid || nameInput.pristine" class="alert alert-danger">
+      The product name is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Code</label>
+    <input type="text" class="form-control" name="productCode" id="productCode" [value]="product.productCode" placeholder="Code" [(ngModel)]="editCode" #codeInput="ngModel" required>
+    <div [hidden]="codeInput.valid || codeInput.pristine" class="alert alert-danger">
+      The product code is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Description</label>
+    <input type="text" class="form-control" name="description" id="description" [value]="product.description" placeholder="Description" [(ngModel)]="editDescription" #descriptionInput="ngModel" required>
+    <div [hidden]="descriptionInput.valid || descriptionInput.pristine" class="alert alert-danger">
+      The product description is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Release date</label>
+    <input type="text" class="form-control" name="releaseDate" id="releaseDate" [value]="product.releaseDate" placeholder="Release date" [(ngModel)]="editReleaseDate"  #releaseDateInput="ngModel" required>
+    <div [hidden]="releaseDateInput.valid || releaseDateInput.pristine" class="alert alert-danger">
+      The product release date is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="name">Price</label>
+    <div class="input-group">
+      <span class="input-group-addon">$</span>
+      <input type="text" class="form-control" name="price" id="price" [value]="product.price" placeholder="Price" [(ngModel)]="editPrice" #priceInput="ngModel" required>
+    </div>
+    <div [hidden]="priceInput.valid || priceInput.pristine" class="alert alert-danger">
+      The product price is required.
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="starRating">Rating</label>
+    <select class="form-control" name="starRating" id="starRating" [(ngModel)]="editStarRating" #starRatingInput="ngModel" required>
+      <option value="" disabled selected>Rate the product</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <div [hidden]="starRatingInput.valid || starRatingInput.pristine" class="alert alert-danger">
+      The product rating is required.
+    </div>
+  </div>
+  <div class="form-group text-right">
+    <button class="btn btn-default" [disabled]="!productForm.form.valid">
+      <i class="glyphicon glyphicon-ok"></i> Save changes
+    </button>
+    <button class="btn btn-default" (click)="cancelEdit()">
+      <i class="glyphicon glyphicon-remove"></i> Discard changes
+    </button>
+  </div>
+</form>

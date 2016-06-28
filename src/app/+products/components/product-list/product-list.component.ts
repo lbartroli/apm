@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
-import {Product} from '../../interfaces/product.interface';
+import {Router} from '@angular/router';
+import {IProduct} from '../../interfaces/product.interface';
 import {ProductFilterPipe} from '../../pipes/product-filter.pipe';
 import {StarComponent} from '../shared/star/star.component';
 import {ProductService} from '../../services/product.service';
@@ -11,7 +11,7 @@ import {ProductService} from '../../services/product.service';
   templateUrl: 'product-list.component.html',
   styleUrls: ['product-list.component.css'],
   pipes: [ProductFilterPipe],
-  directives: [StarComponent, ROUTER_DIRECTIVES]
+  directives: [StarComponent]
 })
 export class ProductListComponent implements OnInit {
   pageTitle: string = 'Product List';
@@ -20,16 +20,24 @@ export class ProductListComponent implements OnInit {
   showImage: boolean = false;
   listFilter: string;
   errorMessage: string;
-  products: Product[];
+  products: IProduct[];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(
-        products => this.products = products, error => this.errorMessage = <any>error);
+      products => this.products = products, error => this.errorMessage = <any>error);
+
+    this.showImage = JSON.parse(localStorage.getItem('showImages'));
   }
 
   toggleImage(): void {
     this.showImage = !this.showImage;
+
+    localStorage.setItem('showImages', JSON.stringify(this.showImage));
+  }
+
+  onSelect(product: IProduct) {
+    this.router.navigate(['/products', product.productId]);
   }
 }

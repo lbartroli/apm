@@ -1,0 +1,16 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-3">
+        <p>{{message}}</p>
+        <p>
+          <button class="form-control" (click)="login()" *ngIf="!authService.isLoggedIn">Login</button>
+          <button class="form-control" (click)="logout()" *ngIf="authService.isLoggedIn">Logout</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

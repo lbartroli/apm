@@ -1,12 +1,9 @@
 import {Component} from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import 'rxjs/Rx';
-import {ROUTER_PROVIDERS, Routes, ROUTER_DIRECTIVES} from '@angular/router';
-import {ProductService} from './+products/services/product.service';
-import {ProductDetailComponent} from './+products/components/product-detail/product-detail.component';
-import {HomeComponent} from './+home';
-import {ProductsComponent} from './+products';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {NavbarComponent} from './navbar';
+import { DialogService }  from './shared/dialog.service';
 
 @Component({
   moduleId: module.id,
@@ -14,14 +11,8 @@ import {NavbarComponent} from './navbar';
   templateUrl: 'apm.component.html',
   styleUrls: ['apm.component.css'],
   directives: [ROUTER_DIRECTIVES, NavbarComponent],
-  providers: [ProductService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
+  providers: [HTTP_PROVIDERS]
 })
-@Routes([
-  {path: '/', component: HomeComponent},
-  {path: '/home', component: HomeComponent},
-  {path: '/products', component: ProductsComponent},
-  {path: '/product/:id', component: ProductDetailComponent},
-])
 export class ApmAppComponent {
   constructor() {}
 }

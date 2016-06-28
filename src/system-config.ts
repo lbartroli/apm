@@ -14,7 +14,7 @@ const packages: any = {};
 const barrels: string[] = [
   // Angular specific barrels.
   '@angular/core', '@angular/common', '@angular/compiler', '@angular/http', '@angular/router',
-  '@angular/platform-browser', '@angular/platform-browser-dynamic',
+  '@angular/platform-browser', '@angular/platform-browser-dynamic', '@angular/forms',
 
   // Thirdparty barrels.
   'rxjs', 'bootstrap',
@@ -23,6 +23,9 @@ const barrels: string[] = [
   'app', 'app/shared', 'app/+home', 'app/+products', 'app/+products/components/product-detail',
   'app/+products/components/product-list', 'app/+products/components/shared/star',
   'app/navbar',
+  'app/+admin',
+  'app/+admin/login',
+  'app/+products/components/shared/product-form',
   /** @cli-barrel */
 ];
 
