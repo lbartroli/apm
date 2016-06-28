@@ -3,6 +3,7 @@ import {HTTP_PROVIDERS} from '@angular/http';
 import 'rxjs/Rx';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {NavbarComponent} from './navbar';
+import { DialogService }  from './shared/dialog.service';
 
 @Component({
   moduleId: module.id,

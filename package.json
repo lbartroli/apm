@@ -40,6 +40,7 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "protractor": "^3.3.0",
+    "rsvp": "^3.2.1",
     "symbol-observable": "^1.0.1",
     "ts-node": "^0.9.3",
     "tslint": "^3.6.0",
