@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
-import {Product} from '../interfaces/product.interface';
+import {IProduct} from '../interfaces/product.interface';
 
 @Injectable()
 export class ProductService {
@@ -9,15 +9,15 @@ export class ProductService {
 
   constructor(private http: Http) {}
 
-  getProducts(): Observable<Product[]> {
+  getProducts(): Observable<IProduct[]> {
     return this.http.get(this.productUrl)
-        .map((response: Response) => <Product[]>response.json())
+        .map((response: Response) => <IProduct[]>response.json())
         .do(data => console.log('All: ' + JSON.stringify(data)))
         .catch(this.handleError);
   }
 
-  getProduct(id: number): Observable<Product> {
-    return this.getProducts().map((products: Product[]) => products.find(p => p.productId === id));
+  getProduct(id: number): Observable<IProduct> {
+    return this.getProducts().map((products: IProduct[]) => products.find(p => p.productId === id));
   }
 
   private handleError(error: Response) {

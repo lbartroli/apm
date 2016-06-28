@@ -1,11 +1,11 @@
 import {it, describe, expect, inject, beforeEachProviders} from '@angular/core/testing';
-import {Product} from '../interfaces/product.interface';
+import {IProduct} from '../interfaces/product.interface';
 import {ProductFilterPipe} from './product-filter.pipe';
 
 describe('ProductFilter Pipe', () => {
   beforeEachProviders(() => [ProductFilterPipe]);
 
-  let products: Product[] = [{
+  let products: IProduct[] = [{
     'productId': 1,
     'productName': 'Leaf Rake',
     'productCode': 'GDN-0011',
